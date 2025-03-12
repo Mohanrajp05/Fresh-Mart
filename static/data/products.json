@@ -5,24 +5,40 @@
       "name": "Fresh Mixed Vegetables",
       "price": 4.99,
       "category": "vegetables",
-      "image": "https://images.unsplash.com/photo-1597362925123-77861d3fbac7",
-      "description": "Assorted fresh vegetables"
+      "image": "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=800",
+      "description": "A seasonal mix of fresh organic vegetables including carrots, broccoli, and bell peppers"
     },
     {
       "id": "v2",
       "name": "Organic Tomatoes",
       "price": 3.99,
       "category": "vegetables",
-      "image": "https://images.unsplash.com/photo-1557844352-761f2565b576",
-      "description": "Fresh organic tomatoes"
+      "image": "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=800",
+      "description": "Vine-ripened organic tomatoes, perfect for salads and cooking"
     },
     {
       "id": "v3",
       "name": "Green Lettuce",
       "price": 2.49,
       "category": "vegetables",
-      "image": "https://images.unsplash.com/photo-1475948164756-9a56289068fb",
-      "description": "Crispy green lettuce"
+      "image": "https://images.unsplash.com/photo-1506073828772-2f85239b6d2d?auto=format&fit=crop&w=800",
+      "description": "Fresh, crispy green lettuce heads, locally sourced and organically grown"
+    },
+    {
+      "id": "v4",
+      "name": "Fresh Carrots",
+      "price": 2.99,
+      "category": "vegetables",
+      "image": "https://images.unsplash.com/photo-1447175008436-054170c2e979?auto=format&fit=crop&w=800",
+      "description": "Sweet and crunchy organic carrots with tops"
+    },
+    {
+      "id": "v5",
+      "name": "Bell Peppers",
+      "price": 3.49,
+      "category": "vegetables",
+      "image": "https://images.unsplash.com/photo-1563246978-26c6594b9f16?auto=format&fit=crop&w=800",
+      "description": "Colorful mix of red, yellow, and green bell peppers"
     }
   ],
   "fruits": [
@@ -31,24 +47,40 @@
       "name": "Mixed Berries",
       "price": 6.99,
       "category": "fruits",
-      "image": "https://images.unsplash.com/photo-1517260739337-6799d239ce83",
-      "description": "Fresh mixed berries"
+      "image": "https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?auto=format&fit=crop&w=800",
+      "description": "Sweet and juicy mix of strawberries, blueberries, and raspberries"
     },
     {
       "id": "f2",
       "name": "Citrus Collection",
       "price": 5.99,
       "category": "fruits",
-      "image": "https://images.unsplash.com/photo-1590590470233-195e7fec2965",
-      "description": "Assorted citrus fruits"
+      "image": "https://images.unsplash.com/photo-1582087463261-ddea03f80e5d?auto=format&fit=crop&w=800",
+      "description": "Fresh assortment of oranges, lemons, and limes rich in vitamin C"
     },
     {
       "id": "f3",
       "name": "Fresh Bananas",
       "price": 2.99,
       "category": "fruits",
-      "image": "https://images.unsplash.com/photo-1498579397066-22750a3cb424",
-      "description": "Ripe yellow bananas"
+      "image": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=800",
+      "description": "Sweet, perfectly ripened bananas from certified organic farms"
+    },
+    {
+      "id": "f4",
+      "name": "Red Apples",
+      "price": 3.99,
+      "category": "fruits",
+      "image": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=800",
+      "description": "Crisp and sweet red apples, perfect for snacking"
+    },
+    {
+      "id": "f5",
+      "name": "Fresh Grapes",
+      "price": 4.99,
+      "category": "fruits",
+      "image": "https://images.unsplash.com/photo-1537640538966-79f369143f8f?auto=format&fit=crop&w=800",
+      "description": "Juicy purple and green grapes, seedless variety"
     }
   ]
 }
