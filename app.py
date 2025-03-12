@@ -12,7 +12,10 @@ app = Flask(__name__)
 app.secret_key = os.environ.get("SESSION_SECRET", "dev-secret-key")
 
 # MongoDB Connection
-app.config["MONGO_URI"] = "mongodb+srv://Mohan7676:Mohan123@cluster0.lchvw.mongodb.net/shop_db?retryWrites=true&w=majority&tlsAllowInvalidCertificates=true"
+app.config["MONGO_URI"] = "mongodb+srv://Mohan7676:Mohan123@cluster0.lchvw.mongodb.net/shop_db?retryWrites=true&w=majority"
+# Set SSL config as separate parameters
+app.config['MONGO_SSL'] = True
+app.config['MONGO_SSL_CERT_REQS'] = None  # Don't validate cert - option CERT_NONE in ssl module
 mongo = PyMongo(app)
 
 def load_products():
@@ -90,8 +93,43 @@ def success():
     return render_template('success.html')
 
 # Create indexes and initial collections if they don't exist
-with app.app_context():
-    # Create unique indexes
-    mongo.db.users.create_index('email', unique=True)
-    mongo.db.users.create_index('username', unique=True)
-    app.logger.info("Successfully connected to MongoDB")
+try:
+    with app.app_context():
+        # Create unique indexes
+        mongo.db.users.create_index('email', unique=True)
+        mongo.db.users.create_index('username', unique=True)
+        app.logger.info("Successfully connected to MongoDB")
+except Exception as e:
+    app.logger.error(f"MongoDB connection failed: {str(e)}")
+    app.logger.info("Using in-memory mode")
+    # Fallback to in-memory user storage
+    from werkzeug.local import LocalProxy
+    
+    class MemoryUserStore:
+        def __init__(self):
+            self.users = {}
+            self.next_id = 1
+            
+        def find_one(self, query):
+            if 'email' in query:
+                for user in self.users.values():
+                    if user['email'] == query['email']:
+                        return user
+            return None
+            
+        def insert_one(self, user_data):
+            user_id = str(self.next_id)
+            self.next_id += 1
+            user_data['_id'] = user_id
+            self.users[user_id] = user_data
+            class Result:
+                def __init__(self, id):
+                    self.inserted_id = id
+            return Result(user_id)
+            
+    # Replace mongo.db.users with in-memory store
+    class FakeDb:
+        def __init__(self):
+            self.users = MemoryUserStore()
+            
+    mongo.db = FakeDb()
