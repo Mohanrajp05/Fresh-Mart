@@ -13,7 +13,7 @@ app = Flask(__name__)
 app.secret_key = os.environ.get("SESSION_SECRET", "dev-secret-key")
 
 # MongoDB Connection
-app.config["MONGO_URI"] = "mongodb+srv://Mohan7676:Mohan123@cluster0.lchvw.mongodb.net/shop_db"
+app.config["MONGO_URI"] = "mongodb+srv://Mohan7676:Mohan123@cluster0.lchvw.mongodb.net/shop_db?ssl=true&ssl_cert_reqs=CERT_NONE"
 mongo = PyMongo(app)
 
 def load_products():
@@ -31,13 +31,26 @@ def login():
         email = request.form.get('email')
         password = request.form.get('password')
         
-        user = mongo.db.users.find_one({"email": email})
-        if user and check_password_hash(user['password_hash'], password):
-            session['user_id'] = str(user['_id'])
-            flash('Login successful!', 'success')
-            return redirect(url_for('index'))
+        try:
+            # Try MongoDB first
+            user = mongo.db.users.find_one({"email": email})
+            if user and check_password_hash(user['password_hash'], password):
+                session['user_id'] = str(user['_id'])
+                flash('Login successful!', 'success')
+                return redirect(url_for('index'))
+        except Exception as e:
+            app.logger.error(f"MongoDB login error: {str(e)}")
+            # Fallback to SQLite
+            if 'db' in globals():
+                user = User.query.filter_by(email=email).first()
+                if user and check_password_hash(user.password_hash, password):
+                    session['user_id'] = user.id
+                    flash('Login successful!', 'success')
+                    return redirect(url_for('index'))
+        
         flash('Invalid email or password', 'error')
     return render_template('login.html')
+</old_str>
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -46,18 +59,41 @@ def register():
         email = request.form.get('email')
         password = request.form.get('password')
         
-        if mongo.db.users.find_one({"email": email}):
-            flash('Email already registered', 'error')
-            return redirect(url_for('register'))
-        
-        user_id = mongo.db.users.insert_one({
-            "username": username,
-            "email": email,
-            "password_hash": generate_password_hash(password)
-        }).inserted_id
-        
-        flash('Registration successful!', 'success')
-        return redirect(url_for('login'))
+        try:
+            # Try MongoDB first
+            if mongo.db.users.find_one({"email": email}):
+                flash('Email already registered', 'error')
+                return redirect(url_for('register'))
+            
+            user_id = mongo.db.users.insert_one({
+                "username": username,
+                "email": email,
+                "password_hash": generate_password_hash(password)
+            }).inserted_id
+            
+            flash('Registration successful!', 'success')
+            return redirect(url_for('login'))
+        except Exception as e:
+            app.logger.error(f"MongoDB registration error: {str(e)}")
+            # Fallback to SQLite
+            if 'db' in globals():
+                if User.query.filter_by(email=email).first():
+                    flash('Email already registered', 'error')
+                    return redirect(url_for('register'))
+                
+                user = User(
+                    username=username,
+                    email=email,
+                    password_hash=generate_password_hash(password)
+                )
+                db.session.add(user)
+                db.session.commit()
+                
+                flash('Registration successful!', 'success')
+                return redirect(url_for('login'))
+            else:
+                flash('Registration failed. Database issues.', 'error')
+    
     return render_template('register.html')
 
 @app.route('/logout')
@@ -89,7 +125,32 @@ def success():
     return render_template('success.html')
 
 # Create indexes and initial collections if they don't exist
-with app.app_context():
-    # Create unique indexes
-    mongo.db.users.create_index('email', unique=True)
-    mongo.db.users.create_index('username', unique=True)
+try:
+    with app.app_context():
+        # Create unique indexes
+        mongo.db.users.create_index('email', unique=True)
+        mongo.db.users.create_index('username', unique=True)
+        app.logger.info("Successfully connected to MongoDB")
+except Exception as e:
+    app.logger.error(f"MongoDB connection failed: {str(e)}")
+    app.logger.info("Using SQLite fallback mode")
+    # Fallback to SQLite
+    from flask_sqlalchemy import SQLAlchemy
+    from sqlalchemy.orm import DeclarativeBase
+    
+    class Base(DeclarativeBase):
+        pass
+    
+    db = SQLAlchemy(model_class=Base)
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///shop.db"
+    db.init_app(app)
+    
+    # Define fallback User model
+    class User(db.Model):
+        id = db.Column(db.Integer, primary_key=True)
+        username = db.Column(db.String(64), unique=True, nullable=False)
+        email = db.Column(db.String(120), unique=True, nullable=False)
+        password_hash = db.Column(db.String(256))
+    
+    with app.app_context():
+        db.create_all()
