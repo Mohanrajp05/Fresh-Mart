@@ -50,7 +50,6 @@ def login():
         
         flash('Invalid email or password', 'error')
     return render_template('login.html')
-</old_str>
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
