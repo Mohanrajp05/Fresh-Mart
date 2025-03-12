@@ -13,7 +13,7 @@ app = Flask(__name__)
 app.secret_key = os.environ.get("SESSION_SECRET", "dev-secret-key")
 
 # MongoDB Connection
-app.config["MONGO_URI"] = "mongodb+srv://Mohan7676:Mohan123@cluster0.lchvw.mongodb.net/shop_db?ssl=true&ssl_cert_reqs=CERT_NONE"
+app.config["MONGO_URI"] = "mongodb+srv://Mohan7676:Mohan123@cluster0.lchvw.mongodb.net/shop_db?retryWrites=true&w=majority&ssl=true&ssl_cert_reqs=CERT_NONE&tlsAllowInvalidCertificates=true"
 mongo = PyMongo(app)
 
 def load_products():
