@@ -5,14 +5,40 @@ class Cart {
     }
 
     addItem(product) {
-        const existingItem = this.items.find(item => item.id === product.id);
-        if (existingItem) {
-            existingItem.quantity += 1;
-        } else {
-            this.items.push({ ...product, quantity: 1 });
+        try {
+            console.log('Adding product to cart:', product);
+            const existingItem = this.items.find(item => item.id === product.id);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                this.items.push({ ...product, quantity: 1 });
+            }
+            this.save();
+            this.updateUI();
+            // Show feedback to user
+            const toast = document.createElement('div');
+            toast.className = 'alert alert-success position-fixed bottom-0 end-0 m-3';
+            toast.innerHTML = `
+                <div class="d-flex align-items-center">
+                    <span>${product.name} added to cart</span>
+                    <button type="button" class="btn-close ms-3" data-bs-dismiss="alert"></button>
+                </div>
+            `;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        } catch (error) {
+            console.error('Error adding item to cart:', error);
+            const toast = document.createElement('div');
+            toast.className = 'alert alert-danger position-fixed bottom-0 end-0 m-3';
+            toast.innerHTML = `
+                <div class="d-flex align-items-center">
+                    <span>Error adding item to cart</span>
+                    <button type="button" class="btn-close ms-3" data-bs-dismiss="alert"></button>
+                </div>
+            `;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
         }
-        this.save();
-        this.updateUI();
     }
 
     removeItem(productId) {
