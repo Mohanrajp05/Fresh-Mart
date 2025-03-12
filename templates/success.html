@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Payment Success{% endblock %}
+
+{% block content %}
+<div class="container text-center py-5">
+    <div class="card success-card">
+        <div class="card-body">
+            <div class="success-icon mb-4">
+                <i class="bi bi-check-circle-fill text-success" style="font-size: 4rem;"></i>
+            </div>
+            <h2 class="card-title mb-4">Payment Successful!</h2>
+            <p class="card-text mb-4">Thank you for your purchase. Your order has been confirmed.</p>
+            <div class="order-details mb-4">
+                <p>Order confirmation has been sent to your email.</p>
+                <p>Your items will be delivered within 2-3 business days.</p>
+            </div>
+            <a href="{{ url_for('index') }}" class="btn btn-primary">
+                <i class="bi bi-house-door me-2"></i>Return to Home
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

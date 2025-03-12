@@ -82,12 +82,23 @@ def logout():
 def cart():
     return render_template('cart.html')
 
-@app.route('/checkout')
+@app.route('/checkout', methods=['GET', 'POST'])
 def checkout():
     if 'user_id' not in session:
         flash('Please login to checkout', 'error')
         return redirect(url_for('login'))
+
+    if request.method == 'POST':
+        # Process the payment (mock)
+        flash('Payment processed successfully!', 'success')
+        return redirect(url_for('success'))
     return render_template('checkout.html')
+
+@app.route('/success')
+def success():
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+    return render_template('success.html')
 
 with app.app_context():
     db.create_all()
