@@ -1,0 +1,54 @@
+{
+  "vegetables": [
+    {
+      "id": "v1",
+      "name": "Fresh Mixed Vegetables",
+      "price": 4.99,
+      "category": "vegetables",
+      "image": "https://images.unsplash.com/photo-1597362925123-77861d3fbac7",
+      "description": "Assorted fresh vegetables"
+    },
+    {
+      "id": "v2",
+      "name": "Organic Tomatoes",
+      "price": 3.99,
+      "category": "vegetables",
+      "image": "https://images.unsplash.com/photo-1557844352-761f2565b576",
+      "description": "Fresh organic tomatoes"
+    },
+    {
+      "id": "v3",
+      "name": "Green Lettuce",
+      "price": 2.49,
+      "category": "vegetables",
+      "image": "https://images.unsplash.com/photo-1475948164756-9a56289068fb",
+      "description": "Crispy green lettuce"
+    }
+  ],
+  "fruits": [
+    {
+      "id": "f1",
+      "name": "Mixed Berries",
+      "price": 6.99,
+      "category": "fruits",
+      "image": "https://images.unsplash.com/photo-1517260739337-6799d239ce83",
+      "description": "Fresh mixed berries"
+    },
+    {
+      "id": "f2",
+      "name": "Citrus Collection",
+      "price": 5.99,
+      "category": "fruits",
+      "image": "https://images.unsplash.com/photo-1590590470233-195e7fec2965",
+      "description": "Assorted citrus fruits"
+    },
+    {
+      "id": "f3",
+      "name": "Fresh Bananas",
+      "price": 2.99,
+      "category": "fruits",
+      "image": "https://images.unsplash.com/photo-1498579397066-22750a3cb424",
+      "description": "Ripe yellow bananas"
+    }
+  ]
+}

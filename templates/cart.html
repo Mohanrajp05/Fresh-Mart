@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Shopping Cart{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <h2 class="mb-4">Shopping Cart</h2>
+        <div id="cart-items">
+            <!-- Cart items will be populated by JavaScript -->
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">Order Summary</h3>
+                <div class="d-flex justify-content-between mb-3">
+                    <span>Total:</span>
+                    <span class="h4" id="cart-total">$0.00</span>
+                </div>
+                <a href="{{ url_for('checkout') }}" class="btn btn-primary w-100">
+                    Proceed to Checkout
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
