@@ -1,2 +1,1 @@
-# Fresh-Mart
-FreshMart is a full-stack e-commerce web app built with Flask, MongoDB Atlas, and Bootstrap 5. It supports secure authentication, dynamic Jinja2 pages, product and stock management, admin controls, smart delivery-fee settings, and a responsive shopping experience from cart to checkout.
+FreshMart  is a full-stack e-commerce web application. The frontend is built with HTML, CSS, and JavaScript, while the backend is developed using Flask (Python) with MongoDB Atlas as the database. It provides a responsive and interactive user experience using Bootstrap 5, supports dynamic server-side rendering with Jinja2, integrates MongoDB through PyMongo, ensures secure authentication with Werkzeug, and is deployed with the Gunicorn WSGI production server.
