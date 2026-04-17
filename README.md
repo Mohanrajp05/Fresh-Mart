@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 
 # Fresh Mart - FreshMarketPlace
 
