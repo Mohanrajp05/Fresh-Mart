@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 # Fresh Mart - FreshMarketPlace
 
@@ -6,8 +7,46 @@ A full-stack grocery marketplace web application built with Flask, MongoDB Atlas
 
 **All core features are working and tested as of April 2026. Stripe integration and production deployment instructions included.**
 
+
+
+## Table of Contents
+
+- Overview
+- Tech Stack
+- Project Structure
+- Features
+- A-Z Application Guide
+- Setup and Installation
+- Configuration
+- Running the App
+- Default Admin Account
+- Core Functional Flows
+- Stock Management Logic
+- Delivery Fee Logic
+- Admin Capabilities
+- API and Routes
+- Data Model (Practical)
+- Testing Checklist
+- Troubleshooting
+- Security Notes
+- Deployment & Environment Variables
+- Stripe Integration
+- Future Improvements
+
 ---
 
+## Overview
+
+Fresh Mart is a modern e-commerce web app for fruits and vegetables:
+- Users can browse/search products, add to cart, and checkout.
+- Stock is validated at checkout in backend.
+- Admin can manage product catalog and order status.
+
+# Fresh Mart - FreshMarketPlace
+
+A full-stack grocery marketplace web application built with Flask, MongoDB Atlas, and JavaScript.
+
+**All core features are working and tested as of April 2026. Stripe integration and production deployment instructions included.**
 
 ## Table of Contents
 
@@ -47,7 +86,6 @@ Fresh Mart is a modern e-commerce web app for fruits and vegetables:
 
 ---
 
-
 ## Tech Stack
 
 - **Backend:** Python, Flask
@@ -86,9 +124,6 @@ FreshMarketPlace/
     contact.html
 ```
 
----
-
-
 ## Features
 
 ### Customer Features
@@ -106,8 +141,6 @@ FreshMarketPlace/
 - Stock status visibility (Out/Low)
 - Low stock and out-of-stock warning cards
 - Delivery settings management (fee and free delivery threshold)
-
----
 
 ## A-Z Application Guide
 
@@ -138,8 +171,6 @@ FreshMarketPlace/
 - **Y - Your Data:** All important data persisted.
 - **Z - Zero Stock Handling:** Out-of-stock marked and blocked.
 
----
-
 ## Setup and Installation
 
 1. **Clone and open project**
@@ -148,60 +179,40 @@ FreshMarketPlace/
    ```
 
 2. **Create virtual environment (recommended)**
-   ```bash
    python -m venv .venv
-   ```
-   Activate:
-   - Windows PowerShell:
-     ```powershell
-     .\.venv\Scripts\Activate.ps1
-     ```
+   .\.venv\Scripts\Activate.ps1
 
 3. **Install dependencies**
-   ```bash
    pip install -r requirements.txt
-   ```
-
----
 
 ## Configuration
 
-- **MongoDB:**  
-  The app uses `MONGO_URI` from environment if set, otherwise defaults to Atlas URI in code.
-  ```powershell
-  $env:MONGO_URI="your_mongodb_uri"
-  ```
-
----
-
+**MongoDB:**
+The app uses `MONGO_URI` from environment if set, otherwise defaults to Atlas URI in code.
+$env:MONGO_URI="your_mongodb_uri"
+$env:MONGO_URI="your_mongodb_uri"
+```
 
 ## Running the App (Development)
 
-```bash
 python app.py
-```
 
 Local URLs:
 - http://127.0.0.1:5000/
 - http://localhost:5000/
 
----
-
 ## Running the App (Production - Windows)
 
 1. **Set environment variables:**
-  ```powershell
-  $env:SESSION_SECRET="your-secret"
-  $env:STRIPE_PUBLIC_KEY="pk_live_..."
-  $env:STRIPE_SECRET_KEY="sk_live_..."
-  $env:MONGO_URI="mongodb+srv://..."
-  ```
+   $env:SESSION_SECRET="your-secret"
+   $env:STRIPE_PUBLIC_KEY="pk_live_..."
+   $env:STRIPE_SECRET_KEY="sk_live_..."
+   $env:MONGO_URI="mongodb+srv://..."
 
 2. **Start with Waitress:**
-  ```powershell
-  python -m waitress --port=8000 app:app
-  ```
-  - App will be available at http://localhost:8000
+   python -m waitress --port=8000 app:app
+   - App will be available at http://localhost:8000
+   - If you see 'waitress not recognized', use the full command above (with python -m waitress) instead of just 'waitress'.
 
 ---
 
@@ -248,7 +259,6 @@ If database is available, app ensures admin exists:
 
 ---
 
-
 ## API and Routes
 
 - `GET /` - home
@@ -279,7 +289,6 @@ If database is available, app ensures admin exists:
 
 ---
 
-
 ## Testing Checklist
 
 - Register/login works
@@ -294,7 +303,6 @@ If database is available, app ensures admin exists:
 
 ---
 
-
 ## Troubleshooting
 
 - **Mongo connection:** Check Atlas IP allowlist, `MONGO_URI`, Python SSL/certifi.
@@ -303,7 +311,6 @@ If database is available, app ensures admin exists:
 - **Waitress not recognized:** Use `python -m waitress --port=8000 app:app` on Windows.
 
 ---
-
 
 ## Security Notes
 
@@ -319,16 +326,12 @@ If database is available, app ensures admin exists:
 
 - Use environment variables for all secrets and keys.
 - Example (PowerShell):
-  ```powershell
-  $env:SESSION_SECRET="your-secret"
-  $env:STRIPE_PUBLIC_KEY="pk_live_..."
-  $env:STRIPE_SECRET_KEY="sk_live_..."
-  $env:MONGO_URI="mongodb+srv://..."
-  ```
+   $env:SESSION_SECRET="your-secret"
+   $env:STRIPE_PUBLIC_KEY="pk_live_..."
+   $env:STRIPE_SECRET_KEY="sk_live_..."
+   $env:MONGO_URI="mongodb+srv://..."
 - Use Waitress for production on Windows:
-  ```powershell
-  python -m waitress --port=8000 app:app
-  ```
+   python -m waitress --port=8000 app:app
 
 ---
 
