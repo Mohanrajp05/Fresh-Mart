@@ -3,26 +3,165 @@
 {% block title %}Shopping Cart{% endblock %}
 
 {% block content %}
-<div class="row">
-    <div class="col-md-8">
-        <h2 class="mb-4">Shopping Cart</h2>
-        <div id="cart-items">
-            <!-- Cart items will be populated by JavaScript -->
+<div class="container py-4">
+    <div class="row">
+        <!-- Cart Items Section -->
+        <div class="col-lg-8">
+            <h1 class="mb-4">Shopping Cart</h1>
+            <div class="cart-items">
+                <!-- Cart items will be dynamically inserted here by cart.js -->
+            </div>
         </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card">
-            <div class="card-body">
-                <h3 class="card-title">Order Summary</h3>
-                <div class="d-flex justify-content-between mb-3">
-                    <span>Total:</span>
-                    <span class="h4" id="cart-total">$0.00</span>
+
+        <!-- Order Summary Section -->
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title h5 mb-4">Order Summary</h2>
+                    <div class="d-flex justify-content-between mb-3">
+                        <span>Total:</span>
+                        <span class="cart-total h5">₹0.00</span>
+                    </div>
+                    <button class="btn btn-success w-100" id="checkout-btn">
+                        PROCEED TO CHECKOUT
+                    </button>
                 </div>
-                <a href="{{ url_for('checkout') }}" class="btn btn-primary w-100">
-                    Proceed to Checkout
-                </a>
             </div>
         </div>
     </div>
 </div>
+
+<style>
+    .cart-items {
+        margin-bottom: 2rem;
+    }
+    
+    .cart-item-card {
+        margin-bottom: 1rem;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    
+    .cart-item-image {
+        height: 200px;
+        object-fit: cover;
+    }
+    
+    .quantity-control {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .quantity-control button {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+    }
+    
+    .btn-remove {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 0.375rem 0.75rem;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-remove:hover {
+        background-color: #218838;
+        transform: translateY(-1px);
+    }
+
+    /* Shopping Information Styles */
+    .shopping-info {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+    }
+
+    .shopping-info h3 {
+        color: #212529;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+    }
+
+    .shopping-info p {
+        color: #495057;
+        margin-bottom: 1rem;
+        line-height: 1.6;
+    }
+
+    .shopping-info ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .shopping-info li {
+        color: #495057;
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: center;
+    }
+
+    .shopping-info li i {
+        color: #4c6ef5;
+        margin-right: 0.75rem;
+        font-size: 1.1rem;
+    }
+
+    .shopping-info label {
+        color: #f9f9f9;
+        font-weight: 600;
+    }
+
+    /* Dark mode styles */
+    [data-bs-theme="dark"] .shopping-info {
+        background-color: #2c3440;
+    }
+
+    [data-bs-theme="dark"] .shopping-info h3 {
+        color: #ffffff;
+    }
+
+    [data-bs-theme="dark"] .shopping-info p,
+    [data-bs-theme="dark"] .shopping-info li {
+        color: #e6e6e6;
+    }
+
+    [data-bs-theme="dark"] .shopping-info li i {
+        color: #6a8fff;
+    }
+
+    [data-bs-theme="dark"] .shopping-info label {
+        color: #e6e6e6;
+    }
+</style>
+{% endblock %}
+
+{% block head %}
+{{ super() }}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Handle checkout button click
+    const checkoutBtn = document.getElementById('checkout-btn');
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', function() {
+            window.location.href = "{{ url_for('checkout') }}";
+        });
+    }
+    
+    // Initialize the cart
+    if (typeof cart !== 'undefined') {
+        cart.updateUI();
+    }
+});
+</script>
 {% endblock %}

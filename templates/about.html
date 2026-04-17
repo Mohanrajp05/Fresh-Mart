@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+
+{% block title %}About Us{% endblock %}
+
+{% block head %}
+{{ super() }}
+<style>
+    /* Light mode styles */
+    .card {
+        background-color: #ffffff;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    
+    .card-title {
+        color: #212529;
+        font-weight: 600;
+    }
+    
+    h4 {
+        color: #212529;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+    }
+    
+    p {
+        color: #495057;
+        line-height: 1.6;
+    }
+    
+    .value-card {
+        background-color: #f8f9fa;
+        transition: transform 0.3s ease;
+    }
+    
+    .value-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .value-card .card-text {
+        color: #495057;
+    }
+    
+    .btn-primary {
+        background: linear-gradient(45deg, #4c6ef5, #6a11cb);
+        border: none;
+        padding: 10px 30px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+        background: linear-gradient(45deg, #5d7df5, #7b23db);
+        transform: translateY(-2px);
+    }
+
+    /* Dark mode styles */
+    [data-bs-theme="dark"] .card {
+        background-color: #2c3440;
+    }
+    
+    [data-bs-theme="dark"] .card-title,
+    [data-bs-theme="dark"] h4,
+    [data-bs-theme="dark"] h2 {
+        color: #ffffff !important;
+    }
+    
+    [data-bs-theme="dark"] p,
+    [data-bs-theme="dark"] .card-text {
+        color: #e6e6e6 !important;
+    }
+    
+    [data-bs-theme="dark"] .value-card {
+        background-color: #22262f;
+        border: 1px solid #3a4356;
+    }
+
+    [data-bs-theme="dark"] .value-card:hover {
+        transform: translateY(-5px);
+        background-color: #2c3440;
+    }
+
+    [data-bs-theme="dark"] .card-body {
+        color: #e6e6e6;
+    }
+
+    [data-bs-theme="dark"] .shadow {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4) !important;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4">About Fresh Mart</h2>
+                    
+                    <div class="mb-4">
+                        <h4>Our Story</h4>
+                        <p>
+                            Fresh Mart was founded in 2023 with a simple mission: to provide fresh, high-quality groceries to our community at affordable prices. What started as a small local store has now grown into a trusted name in fresh produce and grocery delivery.
+                        </p>
+                        <p>
+                            We work directly with local farmers and suppliers to ensure that our customers receive the freshest fruits, vegetables, and other grocery items. By cutting out the middlemen, we're able to offer competitive prices while supporting local agriculture.
+                        </p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h4>Our Values</h4>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="card h-100 value-card">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><i class="bi bi-check-circle-fill text-success me-2"></i>Freshness</h5>
+                                        <p class="card-text">We are committed to providing the freshest products possible, sourced directly from farms to your table.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card h-100 value-card">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><i class="bi bi-heart-fill text-danger me-2"></i>Quality</h5>
+                                        <p class="card-text">We never compromise on quality. Every product is carefully selected and inspected before reaching our customers.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card h-100 value-card">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><i class="bi bi-people-fill text-primary me-2"></i>Community</h5>
+                                        <p class="card-text">We believe in supporting local farmers and businesses, creating a sustainable ecosystem for our community.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card h-100 value-card">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><i class="bi bi-globe text-info me-2"></i>Sustainability</h5>
+                                        <p class="card-text">We are committed to environmentally friendly practices, from sourcing to packaging and delivery.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h4>Our Team</h4>
+                        <p>
+                            Our team consists of passionate individuals who are dedicated to providing the best shopping experience for our customers. From our procurement team who selects the finest produce, to our delivery personnel who ensure your groceries reach you in perfect condition, everyone at Fresh Mart is committed to excellence.
+                        </p>
+                    </div>
+                    
+                    <div class="text-center mt-4">
+                        <a href="{{ url_for('contact') }}" class="btn btn-primary">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Copyright Footer -->
+<div class="container-fluid bg-dark text-white py-3 mt-5">
+    <div class="container text-center">
+        <p class="mb-0">Copyright &copy; 2024 All Rights Reserved By Fresh Mart</p>
+    </div>
+</div>
+{% endblock %} 

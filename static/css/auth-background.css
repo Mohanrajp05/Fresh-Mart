@@ -1,0 +1,54 @@
+/* Authentication Pages Background Styles */
+
+body.auth-page {
+    background-image: url("{{ url_for('static', filename='Images/background image.jpg') }}") !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+    position: relative;
+}
+
+body.auth-page::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: -1;
+}
+
+.auth-card {
+    background-color: rgba(33, 37, 51, 0.85);
+    border-radius: 10px;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+    color: white;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.form-control {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.form-control:focus {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+}
+
+.form-label {
+    color: white;
+}
+
+.auth-btn {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    border: none;
+}
+
+.auth-btn:hover {
+    background: linear-gradient(to right, #5a0fc0, #1e68e0);
+} 

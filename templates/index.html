@@ -3,42 +3,37 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<div class="row mb-4">
-    <div class="col-md-6">
-        <div class="input-group">
-            <input type="text" class="form-control" id="search-input" placeholder="Search products...">
-            <span class="input-group-text"><i class="bi bi-search"></i></span>
+<div class="container py-4">
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="input-group">
+                <input type="text" class="form-control" id="search-input" placeholder="Search products...">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="btn-group float-end">
+                <button class="btn btn-outline-secondary category-filter active" data-category="all">ALL</button>
+                <button class="btn btn-outline-secondary category-filter" data-category="vegetables">VEGETABLES</button>
+                <button class="btn btn-outline-secondary category-filter" data-category="fruits">FRUITS</button>
+            </div>
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="btn-group float-end">
-            <button class="btn btn-outline-secondary category-filter active" data-category="all">All</button>
-            <button class="btn btn-outline-secondary category-filter" data-category="vegetables">Vegetables</button>
-            <button class="btn btn-outline-secondary category-filter" data-category="fruits">Fruits</button>
-        </div>
+
+    <div class="row g-4">
+        <!-- Product cards will be dynamically generated -->
     </div>
 </div>
 
-<div class="row g-4">
-    {% for category in products %}
-        {% for product in products[category] %}
-        <div class="col-md-4 col-lg-3 product-card" data-category="{{ category }}">
-            <div class="card h-100">
-                <img src="{{ product.image }}" class="card-img-top product-image" alt="{{ product.name }}">
-                <div class="card-body">
-                    <h5 class="card-title">{{ product.name }}</h5>
-                    <p class="card-text">{{ product.description }}</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <span class="h5 mb-0">${{ product.price }}</span>
-                        <button class="btn btn-primary add-to-cart" 
-                                onclick='cart.addItem({{ product|tojson|safe }})'>
-                            Add to Cart
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    {% endfor %}
-</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize cart if not already initialized
+    if (typeof cart === 'undefined') {
+        console.error('Cart not initialized. Loading cart.js...');
+        const script = document.createElement('script');
+        script.src = "{{ url_for('static', filename='js/cart.js') }}";
+        document.body.appendChild(script);
+    }
+});
+</script>
 {% endblock %}

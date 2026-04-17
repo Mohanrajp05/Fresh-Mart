@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Background Image</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+        
+        .image-container {
+            width: 80%;
+            text-align: center;
+        }
+        
+        .test-image {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #333;
+        }
+        
+        h1 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <h1>Testing Vegetable Background Image</h1>
+        <img src="{{ url_for('static', filename='Images/vegetables-background.jpg') }}" alt="Vegetable Background" class="test-image">
+        <p>If you can see the image above, it means the image is correctly saved in your project.</p>
+    </div>
+</body>
+</html> 

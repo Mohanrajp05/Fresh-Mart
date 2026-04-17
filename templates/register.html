@@ -2,41 +2,166 @@
 
 {% block title %}Register{% endblock %}
 
+{% block head %}
+{{ super() }}
+<style>
+    /* Base styles for auth page background */
+    body.auth-page {
+        background-image: url("{{ url_for('static', filename='Images/vegetables-background.jpg') }}") !important;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        background-attachment: fixed !important;
+        position: relative;
+    }
+    
+    /* Dark mode styles */
+    html[data-bs-theme="dark"] .auth-card {
+        background-color: rgba(33, 37, 51, 0.85) !important;
+        color: white !important;
+    }
+    
+    /* Light mode styles */
+    html[data-bs-theme="light"] .auth-card {
+        background-color: rgba(255, 255, 255, 0.9) !important;
+        color: #212529 !important;
+    }
+    
+    .auth-card {
+        border-radius: 10px !important;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3) !important;
+        margin-top: 2rem !important;
+        margin-bottom: 2rem !important;
+        border: none !important;
+    }
+    
+    /* Form controls for dark mode */
+    html[data-bs-theme="dark"] .form-control {
+        background-color: rgba(255, 255, 255, 0.1) !important;
+        border-color: rgba(255, 255, 255, 0.2) !important;
+        color: white !important;
+    }
+    
+    /* Form controls for light mode */
+    html[data-bs-theme="light"] .form-control {
+        background-color: rgba(255, 255, 255, 0.9) !important;
+        border-color: rgba(0, 0, 0, 0.2) !important;
+        color: #212529 !important;
+    }
+    
+    /* Form control focus states */
+    html[data-bs-theme="dark"] .form-control:focus {
+        background-color: rgba(255, 255, 255, 0.15) !important;
+        color: white !important;
+    }
+    
+    html[data-bs-theme="light"] .form-control:focus {
+        background-color: rgba(255, 255, 255, 1) !important;
+        color: #212529 !important;
+    }
+    
+    /* Form labels */
+    html[data-bs-theme="dark"] .form-label {
+        color: white !important;
+    }
+    
+    html[data-bs-theme="light"] .form-label {
+        color: #212529 !important;
+    }
+    
+    /* Card title */
+    html[data-bs-theme="dark"] .card-title {
+        color: white !important;
+    }
+    
+    html[data-bs-theme="light"] .card-title {
+        color: #212529 !important;
+    }
+    
+    /* Button styles */
+    .auth-btn {
+        background: linear-gradient(to right, #6a11cb, #2575fc) !important;
+        border: none !important;
+        color: white !important;
+    }
+    
+    .auth-btn:hover {
+        background: linear-gradient(to right, #5a0fc0, #1e68e0) !important;
+    }
+    
+    /* Link colors */
+    html[data-bs-theme="dark"] .text-info {
+        color: #54d5ff !important;
+    }
+    
+    html[data-bs-theme="light"] .text-info {
+        color: #0dcaf0 !important;
+    }
+    
+    /* Additional text colors */
+    html[data-bs-theme="dark"] .text-auth {
+        color: white !important;
+    }
+    
+    html[data-bs-theme="light"] .text-auth {
+        color: #212529 !important;
+    }
+</style>
+{% endblock %}
+
+{% block body_class %}auth-page{% endblock %}
+
 {% block content %}
-<div class="row justify-content-center">
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-body">
-                <h2 class="card-title text-center mb-4">Register</h2>
-                <form method="POST" action="{{ url_for('register') }}" class="needs-validation" novalidate>
-                    <div class="mb-3">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="username" name="username" required>
-                        <div class="invalid-feedback">
-                            Please choose a username.
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card auth-card">
+                <div class="card-body p-4">
+                    <h2 class="card-title text-center mb-4">Register</h2>
+                    <form method="POST" action="{{ url_for('register') }}" class="needs-validation" novalidate>
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" name="username" required>
+                            <div class="invalid-feedback">
+                                Please choose a username.
+                            </div>
                         </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
-                        <div class="invalid-feedback">
-                            Please enter a valid email address.
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                            <div class="invalid-feedback">
+                                Please enter a valid email address.
+                            </div>
                         </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" required minlength="6">
-                        <div class="invalid-feedback">
-                            Password must be at least 6 characters long.
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" required minlength="6">
+                            <div class="invalid-feedback">
+                                Password must be at least 6 characters long.
+                            </div>
                         </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100">Register</button>
-                </form>
-                <p class="text-center mt-3">
-                    Already have an account? <a href="{{ url_for('login') }}">Login here</a>
-                </p>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary auth-btn">REGISTER</button>
+                        </div>
+                    </form>
+                    <p class="text-center mt-3 text-auth">
+                        Already have an account? <a href="{{ url_for('login') }}" class="text-info">Login here</a>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    // Override theme toggle for auth pages to ensure consistent styling
+    document.addEventListener('DOMContentLoaded', function() {
+        // Force the background to be visible regardless of theme
+        document.body.style.backgroundImage = "url('{{ url_for('static', filename='Images/vegetables-background.jpg') }}')";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center";
+        document.body.style.backgroundRepeat = "no-repeat";
+        document.body.style.backgroundAttachment = "fixed";
+    });
+</script>
 {% endblock %}

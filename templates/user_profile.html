@@ -1,0 +1,252 @@
+{% extends "base.html" %}
+
+{% block title %}User Profile{% endblock %}
+
+{% block head %}
+{{ super() }}
+<style>
+    .profile-card,
+    .history-card {
+        background-color: #22262f !important;
+        border: 1px solid #2c3340 !important;
+        border-radius: 10px !important;
+        color: #ffffff !important;
+    }
+
+    .profile-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.25rem;
+    }
+
+    .profile-item small {
+        color: #9aa4b2;
+        display: block;
+        margin-bottom: 0.25rem;
+    }
+
+    .profile-item div {
+        font-weight: 600;
+        word-break: break-word;
+    }
+
+    .status-badge {
+        display: inline-block;
+        padding: 0.25rem 0.65rem;
+        border-radius: 0.35rem;
+        font-size: 0.8rem;
+        font-weight: 700;
+    }
+
+    .status-active {
+        background-color: #198754;
+        color: #fff;
+    }
+
+    .status-inactive {
+        background-color: #6c757d;
+        color: #fff;
+    }
+
+    .action-row {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+    }
+
+    .table thead th {
+        background-color: #2c3340 !important;
+        border-color: #2c3340 !important;
+        color: #fff !important;
+    }
+
+    .table tbody td {
+        border-color: #2c3340 !important;
+        color: #d8dce1 !important;
+    }
+
+    @media (max-width: 992px) {
+        .profile-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    @media (max-width: 576px) {
+        .profile-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="mb-3">
+        <a href="{{ url_for('admin_dashboard') }}" class="btn btn-outline-secondary btn-sm">Back To Admin</a>
+    </div>
+
+    <div class="card profile-card mb-3">
+        <div class="card-header">
+            <h5 class="mb-0">User Profile</h5>
+        </div>
+        <div class="card-body">
+            <div class="profile-grid">
+                <div class="profile-item">
+                    <small>Username</small>
+                    <div>{{ profile.username }}</div>
+                </div>
+                <div class="profile-item">
+                    <small>Email</small>
+                    <div>{{ profile.email }}</div>
+                </div>
+                <div class="profile-item">
+                    <small>Phone</small>
+                    <div>{{ profile.phone }}</div>
+                </div>
+                <div class="profile-item">
+                    <small>Address</small>
+                    <div>{{ profile.address }}</div>
+                </div>
+                <div class="profile-item">
+                    <small>Total Orders</small>
+                    <div>{{ profile.total_orders }}</div>
+                </div>
+                <div class="profile-item">
+                    <small>Total Spent</small>
+                    <div>₹{{ '%.2f'|format(profile.total_spent|float) }}</div>
+                </div>
+                <div class="profile-item">
+                    <small>Last Order</small>
+                    <div>{{ profile.last_order|datetime if profile.last_order else 'N/A' }}</div>
+                </div>
+                <div class="profile-item">
+                    <small>Status</small>
+                    {% if profile.status == 'inactive' %}
+                    <span class="status-badge status-inactive">Inactive</span>
+                    {% else %}
+                    <span class="status-badge status-active">Active</span>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="action-row mt-4">
+                <form method="POST" action="{{ url_for('admin_delete_user_history', user_id=profile.id) }}" onsubmit="return confirm('Delete this user\'s order history?')">
+                    <button type="submit" class="btn btn-warning btn-sm">Delete User History</button>
+                </form>
+                <form method="POST" action="{{ url_for('admin_delete_user_account', user_id=profile.id) }}" onsubmit="return confirm('Delete this user account and all related orders?')">
+                    <button type="submit" class="btn btn-danger btn-sm">Delete User Account</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="card history-card">
+        <div class="card-header">
+            <h5 class="mb-0">Order History</h5>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Date</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if orders %}
+                            {% for order in orders %}
+                            <tr>
+                                <td>{{ order._id }}</td>
+                                <td>{{ order.created_at|datetime }}</td>
+                                <td>₹{{ '%.2f'|format(order.total|float) }}</td>
+                                <td>{{ order.status|title }}</td>
+                                <td>
+                                    <button class="btn btn-sm btn-secondary view-order" data-order-id="{{ order._id }}">View</button>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td colspan="5" class="text-center text-muted">No orders found for this user.</td>
+                            </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="orderDetailsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Order Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="orderDetailsContent"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.view-order').forEach(button => {
+        button.addEventListener('click', function () {
+            const orderId = this.getAttribute('data-order-id');
+            const content = document.getElementById('orderDetailsContent');
+            content.innerHTML = '<div class="text-center py-4">Loading...</div>';
+
+            const modal = new bootstrap.Modal(document.getElementById('orderDetailsModal'));
+            modal.show();
+
+            fetch(`/api/orders/${orderId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success === false) {
+                        throw new Error(data.message || 'Failed to load order details');
+                    }
+
+                    const items = (data.items || []).map(item => `
+                        <tr>
+                            <td>${item.name}</td>
+                            <td>${item.quantity}</td>
+                            <td>₹${item.price}</td>
+                            <td>₹${(item.quantity * item.price).toFixed(2)}</td>
+                        </tr>
+                    `).join('');
+
+                    content.innerHTML = `
+                        <p><strong>Order ID:</strong> ${data._id}</p>
+                        <p><strong>Status:</strong> ${data.status}</p>
+                        <p><strong>Date:</strong> ${new Date(data.created_at * 1000).toLocaleString()}</p>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Qty</th>
+                                        <th>Price</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>${items}</tbody>
+                            </table>
+                        </div>
+                        <p class="text-end mb-1"><strong>Subtotal:</strong> ₹${data.subtotal}</p>
+                        <p class="text-end mb-1"><strong>Delivery Fee:</strong> ₹${data.delivery_fee}</p>
+                        <p class="text-end"><strong>Grand Total:</strong> ₹${data.total}</p>
+                    `;
+                })
+                .catch(err => {
+                    content.innerHTML = `<div class="alert alert-danger">${err.message}</div>`;
+                });
+        });
+    });
+});
+</script>
+{% endblock %}

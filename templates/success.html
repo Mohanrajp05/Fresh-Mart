@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Payment Success{% endblock %}
+{% block title %}Order Confirmed{% endblock %}
 
 {% block content %}
 <div class="container text-center py-5">
@@ -9,11 +9,17 @@
             <div class="success-icon mb-4">
                 <i class="bi bi-check-circle-fill text-success" style="font-size: 4rem;"></i>
             </div>
-            <h2 class="card-title mb-4">Payment Successful!</h2>
-            <p class="card-text mb-4">Thank you for your purchase. Your order has been confirmed.</p>
+            <h2 class="card-title mb-4">Order Confirmed!</h2>
+            <p class="card-text mb-4">Thank you for your purchase.</p>
             <div class="order-details mb-4">
-                <p>Order confirmation has been sent to your email.</p>
-                <p>Your items will be delivered within 2-3 business days.</p>
+                <p class="h5 text-success mb-3">Order is Confirmed</p>
+                
+                {% if session.get('payment_method') == 'card' %}
+                <p>Payment successfull! Your items will be delivered within 2-3 hours from the booking time.</p>
+                {% else %}
+                <p>Your items will be delivered within 2-3 hours from the booking time.</p>
+                <p class="mt-2"><strong>Payment:</strong> Cash on Delivery</p>
+                {% endif %}
             </div>
             <a href="{{ url_for('index') }}" class="btn btn-primary">
                 <i class="bi bi-house-door me-2"></i>Return to Home
@@ -21,4 +27,20 @@
         </div>
     </div>
 </div>
+
+<script>
+    // Clear the cart after successful order
+    document.addEventListener('DOMContentLoaded', function() {
+        // Clear cart data from localStorage
+        localStorage.removeItem('cart');
+        
+        // If you have a cart instance, reset it
+        if (typeof cart !== 'undefined') {
+            cart.items = [];
+            cart.updateUI();
+        }
+        
+        console.log('Cart cleared after successful order');
+    });
+</script>
 {% endblock %}
