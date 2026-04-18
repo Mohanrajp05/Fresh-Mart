@@ -1,4 +1,3 @@
-![Lighthouse Desktop](static/Images/Lighthouse%20testing%20for%20Desktop.jpeg)
 ## Lighthouse Reports
 
 ### Desktop
