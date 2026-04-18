@@ -15,7 +15,7 @@ A full-stack grocery marketplace web application built with Flask, MongoDB Atlas
 ![Lighthouse Desktop](static/Images/Lighthouse%20testing%20for%20Desktop.jpeg)
 
 ### Mobile
-![Lighthouse Mobile](static/Images/Lighthouse%20testing%20%20for%20Mobile.jpeg)
+![Lighthouse Mobile](static/Images/Lighthouse%20testing%20for%20Mobile.jpeg)
 
 
 **All core features are working and tested as of April 2026. Stripe integration and production deployment instructions included.**
