@@ -1,4 +1,10 @@
-<<<<<<< HEAD
+## Lighthouse Reports
+
+### Desktop
+![Lighthouse Desktop](static/Images/Lighthouse%20testing%20for%20Desktop.jpeg)
+
+### Mobile
+![Lighthouse Mobile](static/Images/Lighthouse%20testing%20for%20Mobile.jpeg)
 
 # Fresh Mart - FreshMarketPlace
 
