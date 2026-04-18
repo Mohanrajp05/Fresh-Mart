@@ -1,5 +1,15 @@
 ![Lighthouse Desktop](static/Images/Lighthouse%20testing%20for%20Desktop.jpeg)
-HEAD
+## Lighthouse Reports
+
+### Desktop
+
+
+# Fresh Mart - FreshMarketPlace
+
+A full-stack grocery marketplace web application built with Flask, MongoDB Atlas, and JavaScript.
+
+**All core features are working and tested as of April 2026. Stripe integration and production deployment instructions included.**
+
 ## Lighthouse Reports
 
 ### Desktop
@@ -7,13 +17,6 @@ HEAD
 
 ### Mobile
 ![Lighthouse Mobile](static/Images/Lighthouse%20testing%20for%20Mobile.jpeg)
-=======
-
-f591318cc8513583bef2631e6cb7e8a784f04cb6
-
-# Fresh Mart - FreshMarketPlace
-
-A full-stack grocery marketplace web application built with Flask, MongoDB Atlas, and JavaScript.
 
 
 **All core features are working and tested as of April 2026. Stripe integration and production deployment instructions included.**
