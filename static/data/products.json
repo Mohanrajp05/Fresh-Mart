@@ -142,7 +142,7 @@
       "category": "vegetables",
       "image": "/static/images/Products/vegetables/1776368203_Brinjal_1_kg.jpg",
       "description": "Healthy and rich in protein.",
-      "stock": 28
+      "stock": 27
     }
   ],
   "fruits": [
@@ -171,7 +171,7 @@
       "category": "fruits",
       "image": "/static/images/Products/Fruits/Fresh Pomegranate 1 kg.jpg",
       "description": "Fresh pomegranates",
-      "stock": 87
+      "stock": 77
     },
     {
       "id": "f4",
@@ -198,7 +198,7 @@
       "category": "fruits",
       "image": "/static/images/Products/Fruits/Green Apple fruit.jpg",
       "description": "Green apples",
-      "stock": 100
+      "stock": 99
     },
     {
       "id": "f7",
@@ -225,7 +225,7 @@
       "category": "fruits",
       "image": "/static/images/Products/Fruits/Mango  fruit 1 kg.jpg",
       "description": "Fresh mangoes",
-      "stock": 87
+      "stock": 86
     },
     {
       "id": "f10",
@@ -270,7 +270,7 @@
       "category": "fruits",
       "image": "/static/images/Products/fruits/1776368501_green_grapes_1_kg.jpg",
       "description": "Sweet and Delicious",
-      "stock": 119
+      "stock": 116
     },
     {
       "id": "f15",
@@ -298,6 +298,15 @@
       "image": "/static/images/Products/fruits/1776461419_Butter_fruit_1kg.jpg",
       "description": "Healthy and rich in Protein",
       "stock": 4
+    },
+    {
+      "id": "f18",
+      "name": "Papaya 1kg",
+      "price": 50.0,
+      "category": "fruits",
+      "image": "/static/images/Products/fruits/1776501052_Papaya_1kg.jpg",
+      "description": "Sweet and Healthy",
+      "stock": 100
     }
   ]
 }

@@ -3,7 +3,6 @@ import ssl
 import json
 import copy
 import dns.resolver
-# Disable SSL certificate validation globally (for testing only)
 ssl._create_default_https_context = ssl._create_unverified_context
 from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify, send_file
 from flask_pymongo import PyMongo 
@@ -41,14 +40,11 @@ app = Flask(__name__)
 app.secret_key = os.environ.get("SESSION_SECRET", "dev-secret-key")
 PRODUCTS_JSON_PATH = os.path.join(app.root_path, 'static', 'data', 'products.json')
 
-# Stripe configuration (now using environment variables)
 import stripe
 app.config['STRIPE_PUBLIC_KEY'] = os.environ.get('STRIPE_PUBLIC_KEY')
 app.config['STRIPE_SECRET_KEY'] = os.environ.get('STRIPE_SECRET_KEY')
 stripe.api_key = app.config['STRIPE_SECRET_KEY']
-# ...existing code...
 
-# Stripe payment route (example, safe to add)
 @app.route('/create-checkout-session', methods=['POST'])
 def create_checkout_session():
     try:
@@ -77,8 +73,9 @@ def create_checkout_session():
 
 
 
-# Use only the Atlas URI for all MongoDB connections
-ATLAS_MONGO_URI = "mongodb+srv://freshmart:fresh%402026@cluster0.l9mlmhl.mongodb.net/freshmartdb?retryWrites=true&w=majority&tlsAllowInvalidCertificates=true"
+
+# Use only the Atlas URI for all MongoDB connections (updated for reliability)
+ATLAS_MONGO_URI = "mongodb+srv://freshmart:fresh%402026@cluster0.l9mlmhl.mongodb.net/freshmartdb?retryWrites=true&w=majority&tls=true&tlsAllowInvalidCertificates=true"
 app.config["MONGO_URI"] = ATLAS_MONGO_URI
 mongo = PyMongo(app)
 MONGO_AVAILABLE = False
@@ -96,19 +93,26 @@ def _ping_mongo() -> bool:
 
 def initialize_mongo():
     global MONGO_AVAILABLE, ACTIVE_MONGO_URI, mongo
-    try:
-        mongo.cx.admin.command('ping')
-        ACTIVE_MONGO_URI = app.config["MONGO_URI"]
-        MONGO_AVAILABLE = True
-        logger.info(f"Successfully connected to MongoDB using URI: {ACTIVE_MONGO_URI}")
-        # Ensure expected indexes are present.
-        mongo.db.users.create_index('email', unique=True)
-        mongo.db.users.create_index('username', unique=True)
-        logger.info("MongoDB indexes created successfully")
-    except Exception as e:
-        logger.error(f"MongoDB connection failed: {str(e)}")
-        MONGO_AVAILABLE = False
-        logger.critical("MongoDB is unavailable. App will continue with limited features.")
+    import time
+    retry_delay = 5  # seconds
+    attempt = 1
+    while True:
+        try:
+            mongo.cx.admin.command('ping')
+            ACTIVE_MONGO_URI = app.config["MONGO_URI"]
+            MONGO_AVAILABLE = True
+            logger.info(f"Successfully connected to MongoDB using URI: {ACTIVE_MONGO_URI}")
+            # Ensure expected indexes are present.
+            mongo.db.users.create_index('email', unique=True)
+            mongo.db.users.create_index('username', unique=True)
+            logger.info("MongoDB indexes created successfully")
+            break
+        except Exception as e:
+            logger.error(f"MongoDB connection attempt {attempt} failed: {str(e)}")
+            MONGO_AVAILABLE = False
+            logger.critical("MongoDB is unavailable. Retrying in 5 seconds...")
+            attempt += 1
+            time.sleep(retry_delay)
 
 
 def ensure_mongo_available() -> bool:
@@ -950,5 +954,6 @@ def update_product(product_id):
         return jsonify({'success': False, 'error': str(e)}), 500
 
 if __name__ == '__main__':
-    # Add host='0.0.0.0' to make the server publicly available
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    # For local development only. In production, use gunicorn via Procfile.
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
