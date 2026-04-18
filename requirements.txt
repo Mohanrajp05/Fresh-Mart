@@ -1,3 +1,5 @@
+# Requirements for Render deployment
+# Ensure all dependencies are listed here. Do not remove any required package.
 Flask==3.1.0
 flask-pymongo==3.0.1
 pymongo[srv]==4.11.2
