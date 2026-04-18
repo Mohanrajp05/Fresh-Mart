@@ -1,6 +1,3 @@
-## Lighthouse Reports
-
-### Desktop
 
 
 # Fresh Mart - FreshMarketPlace
