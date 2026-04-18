@@ -1,4 +1,11 @@
-HEAD
+f591318cc8513583bef2631e6cb7e8a784f04cb6
+
+# Fresh Mart - FreshMarketPlace
+
+A full-stack grocery marketplace web application built with Flask, MongoDB Atlas, and JavaScript.
+
+**All core features are working and tested as of April 2026. Stripe integration and production deployment instructions included.**
+
 ## Lighthouse Reports
 
 ### Desktop
@@ -6,57 +13,6 @@ HEAD
 
 ### Mobile
 ![Lighthouse Mobile](static/Images/Lighthouse%20testing%20for%20Mobile.jpeg)
-=======
-
-f591318cc8513583bef2631e6cb7e8a784f04cb6
-
-# Fresh Mart - FreshMarketPlace
-
-A full-stack grocery marketplace web application built with Flask, MongoDB Atlas, and JavaScript.
-
-
-**All core features are working and tested as of April 2026. Stripe integration and production deployment instructions included.**
-
-
-
-## Table of Contents
-
-- Overview
-- Tech Stack
-- Project Structure
-- Features
-- A-Z Application Guide
-- Setup and Installation
-- Configuration
-- Running the App
-- Default Admin Account
-- Core Functional Flows
-- Stock Management Logic
-- Delivery Fee Logic
-- Admin Capabilities
-- API and Routes
-- Data Model (Practical)
-- Testing Checklist
-- Troubleshooting
-- Security Notes
-- Deployment & Environment Variables
-- Stripe Integration
-- Future Improvements
-
----
-
-## Overview
-
-Fresh Mart is a modern e-commerce web app for fruits and vegetables:
-- Users can browse/search products, add to cart, and checkout.
-- Stock is validated at checkout in backend.
-- Admin can manage product catalog and order status.
-
-# Fresh Mart - FreshMarketPlace
-
-A full-stack grocery marketplace web application built with Flask, MongoDB Atlas, and JavaScript.
-
-**All core features are working and tested as of April 2026. Stripe integration and production deployment instructions included.**
 
 ## Table of Contents
 
