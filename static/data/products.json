@@ -7,7 +7,7 @@
       "category": "vegetables",
       "image": "/static/images/Products/vegetables/Tomato 1 kg.jpg",
       "description": "Fresh tomatoes",
-      "stock": 98
+      "stock": 97
     },
     {
       "id": "v2",
@@ -16,7 +16,7 @@
       "category": "vegetables",
       "image": "/static/images/Products/vegetables/Fresh Broccoli vegetable 500 g.jpg",
       "description": "Fresh broccoli",
-      "stock": 97
+      "stock": 96
     },
     {
       "id": "v3",
@@ -25,7 +25,7 @@
       "category": "vegetables",
       "image": "/static/images/Products/vegetables/Onion 1 kg .jpg",
       "description": "Fresh onions",
-      "stock": 76
+      "stock": 75
     },
     {
       "id": "v4",
@@ -270,7 +270,7 @@
       "category": "fruits",
       "image": "/static/images/Products/fruits/1776368501_green_grapes_1_kg.jpg",
       "description": "Sweet and Delicious",
-      "stock": 116
+      "stock": 115
     },
     {
       "id": "f15",
@@ -279,7 +279,7 @@
       "category": "fruits",
       "image": "/static/images/Products/fruits/1776423929_Pears_Fruit_1_kg.jpeg",
       "description": "Sweet and Healthy",
-      "stock": 100
+      "stock": 99
     },
     {
       "id": "f16",
@@ -306,7 +306,7 @@
       "category": "fruits",
       "image": "/static/images/Products/fruits/1776501052_Papaya_1kg.jpg",
       "description": "Sweet and Healthy",
-      "stock": 100
+      "stock": 94
     }
   ]
 }

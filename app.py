@@ -74,7 +74,6 @@ def create_checkout_session():
 
 
 
-# Use only the Atlas URI for all MongoDB connections (updated for reliability)
 ATLAS_MONGO_URI = "mongodb+srv://freshmart:fresh%402026@cluster0.l9mlmhl.mongodb.net/freshmartdb?retryWrites=true&w=majority&tls=true&tlsAllowInvalidCertificates=true"
 app.config["MONGO_URI"] = ATLAS_MONGO_URI
 mongo = PyMongo(app)
