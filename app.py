@@ -71,7 +71,7 @@ def create_checkout_session():
         flash(f"Stripe error: {str(e)}", 'danger')
         return redirect(url_for('checkout'))
 
-
+corre
 
 
 ATLAS_MONGO_URI = "mongodb+srv://freshmart:fresh%402026@cluster0.l9mlmhl.mongodb.net/freshmartdb?retryWrites=true&w=majority&tls=true&tlsAllowInvalidCertificates=true"
@@ -752,16 +752,16 @@ def add_product():
                 flash('Only JPG, JPEG, PNG and WEBP images are allowed.', 'error')
                 return redirect(url_for('admin_dashboard'))
 
-            upload_dir = os.path.join(app.root_path, 'static', 'images', 'Products', category)
+            upload_dir = os.path.join(app.root_path, 'static', 'Images', 'Products', category)
             os.makedirs(upload_dir, exist_ok=True)
 
             saved_name = f"{int(time.time())}_{filename}"
             save_path = os.path.join(upload_dir, saved_name)
             image_file.save(save_path)
-            image_path = f"/static/images/Products/{category}/{saved_name}"
+            image_path = f"/static/Images/Products/{category}/{saved_name}"
 
         if not image_path:
-            image_path = '/static/images/placeholder.jpg'
+            image_path = '/static/Images/placeholder.jpg'
 
         products_data = load_products()
         if category not in products_data:

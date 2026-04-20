@@ -5,7 +5,7 @@
       "name": "Tomato 1 kg",
       "price": 30,
       "category": "vegetables",
-      "image": "/static/images/Products/vegetables/Tomato 1 kg.jpg",
+      "image": "/static/Images/Products/vegetables/Tomato 1 kg.jpg",
       "description": "Fresh tomatoes",
       "stock": 97
     },
@@ -14,7 +14,7 @@
       "name": "Fresh Broccoli vegetable 500 g",
       "price": 50,
       "category": "vegetables",
-      "image": "/static/images/Products/vegetables/Fresh Broccoli vegetable 500 g.jpg",
+      "image": "/static/Images/Products/vegetables/Fresh Broccoli vegetable 500 g.jpg",
       "description": "Fresh broccoli",
       "stock": 96
     },
@@ -23,7 +23,7 @@
       "name": "Onion 1 kg",
       "price": 50,
       "category": "vegetables",
-      "image": "/static/images/Products/vegetables/Onion 1 kg .jpg",
+      "image": "/static/Images/Products/vegetables/Onion 1 kg .jpg",
       "description": "Fresh onions",
       "stock": 75
     },
@@ -32,7 +32,7 @@
       "name": "Carrot 1 kg",
       "price": 50,
       "category": "vegetables",
-      "image": "/static/images/Products/vegetables/Carrot 1 kg.jpg",
+      "image": "/static/Images/Products/vegetables/Carrot 1 kg.jpg",
       "description": "Crunchy carrots",
       "stock": 96
     },
@@ -41,7 +41,7 @@
       "name": "Green sweet pepper 1 kg",
       "price": 80,
       "category": "vegetables",
-      "image": "/static/images/Products/vegetables/Green sweet pepper 1 kg.jpg",
+      "image": "/static/Images/Products/vegetables/Green sweet pepper 1 kg.jpg",
       "description": "Fresh sweet pepper",
       "stock": 99
     },
@@ -50,7 +50,7 @@
       "name": "Fresh ginger root or rhizome 500 g",
       "price": 60,
       "category": "vegetables",
-      "image": "/static/images/Products/vegetables/Fresh ginger root or rhizome 500 g.jpg",
+      "image": "/static/Images/Products/vegetables/Fresh ginger root or rhizome 500 g.jpg",
       "description": "Fresh ginger",
       "stock": 99
     },
@@ -59,7 +59,7 @@
       "name": "Green kidney bean 1 kg",
       "price": 90,
       "category": "vegetables",
-      "image": "/static/images/Products/vegetables/Green kidney bean 1 kg.jpg",
+      "image": "/static/Images/Products/vegetables/Green kidney bean 1 kg.jpg",
       "description": "Fresh kidney beans",
       "stock": 100
     },
@@ -68,7 +68,7 @@
       "name": "Fresh Garlic 1 kg",
       "price": 80,
       "category": "vegetables",
-      "image": "/static/images/Products/vegetables/Fresh Garlic 1 kg.jpg",
+      "image": "/static/Images/Products/vegetables/Fresh Garlic 1 kg.jpg",
       "description": "Fresh garlic",
       "stock": 99
     },
@@ -77,7 +77,7 @@
       "name": "whole green cabbage 1 kg",
       "price": 50,
       "category": "vegetables",
-      "image": "/static/images/Products/vegetables/whole green cabbage  1 kg.jpg",
+      "image": "/static/Images/Products/vegetables/whole green cabbage  1 kg.jpg",
       "description": "Fresh cabbage",
       "stock": 100
     },
@@ -86,7 +86,7 @@
       "name": "Fresh Coriander",
       "price": 50,
       "category": "vegetables",
-      "image": "/static/images/Products/vegetables/Fresh Coriander.jpg",
+      "image": "/static/Images/Products/vegetables/Fresh Coriander.jpg",
       "description": "Fresh coriander",
       "stock": 99
     },
@@ -95,7 +95,7 @@
       "name": "pumpkin 1 kg",
       "price": 50,
       "category": "vegetables",
-      "image": "/static/images/Products/vegetables/pumpkin 1 kg.jpg",
+      "image": "/static/Images/Products/vegetables/pumpkin 1 kg.jpg",
       "description": "Fresh pumpkin",
       "stock": 99
     },
@@ -151,7 +151,7 @@
       "name": "Apple 1 kg",
       "price": 120,
       "category": "fruits",
-      "image": "/static/images/Products/Fruits/Apple 1 kg.jpg",
+      "image": "/static/Images/Products/Fruits/Apple 1 kg.jpg",
       "description": "Fresh apples",
       "stock": 97
     },
@@ -160,7 +160,7 @@
       "name": "Fresh Orange 1 kg",
       "price": 80,
       "category": "fruits",
-      "image": "/static/images/Products/Fruits/Fresh Orange 1 kg.jpg",
+      "image": "/static/Images/Products/Fruits/Fresh Orange 1 kg.jpg",
       "description": "Fresh oranges",
       "stock": 97
     },
@@ -169,7 +169,7 @@
       "name": "Fresh Pomegranate 1 kg",
       "price": 200,
       "category": "fruits",
-      "image": "/static/images/Products/Fruits/Fresh Pomegranate 1 kg.jpg",
+      "image": "/static/Images/Products/Fruits/Fresh Pomegranate 1 kg.jpg",
       "description": "Fresh pomegranates",
       "stock": 77
     },
@@ -178,7 +178,7 @@
       "name": "Muskmelon 1 kg.",
       "price": 100,
       "category": "fruits",
-      "image": "/static/images/Products/Fruits/Muskmelon 1 kg..jpg",
+      "image": "/static/Images/Products/Fruits/Muskmelon 1 kg..jpg",
       "description": "Fresh muskmelon",
       "stock": 89
     },
@@ -187,7 +187,7 @@
       "name": "Custard Apple fruit",
       "price": 70,
       "category": "fruits",
-      "image": "/static/images/Products/Fruits/Custard Apple fruit.jpg",
+      "image": "/static/Images/Products/Fruits/Custard Apple fruit.jpg",
       "description": "Custard apple",
       "stock": 100
     },
@@ -196,7 +196,7 @@
       "name": "Green Apple fruit",
       "price": 100,
       "category": "fruits",
-      "image": "/static/images/Products/Fruits/Green Apple fruit.jpg",
+      "image": "/static/Images/Products/Fruits/Green Apple fruit.jpg",
       "description": "Green apples",
       "stock": 99
     },
@@ -205,7 +205,7 @@
       "name": "watermelon 1 kg",
       "price": 50,
       "category": "fruits",
-      "image": "/static/images/Products/Fruits/watermelon 1 kg.jpg",
+      "image": "/static/Images/Products/Fruits/watermelon 1 kg.jpg",
       "description": "Fresh watermelon",
       "stock": 98
     },
@@ -214,7 +214,7 @@
       "name": "Kiwi fruit 500 g",
       "price": 100,
       "category": "fruits",
-      "image": "/static/images/Products/Fruits/Kiwi fruit 500 g.jpg",
+      "image": "/static/Images/Products/Fruits/Kiwi fruit 500 g.jpg",
       "description": "Fresh kiwi",
       "stock": 100
     },
@@ -223,7 +223,7 @@
       "name": "Mango fruit 1 kg",
       "price": 100,
       "category": "fruits",
-      "image": "/static/images/Products/Fruits/Mango  fruit 1 kg.jpg",
+      "image": "/static/Images/Products/Fruits/Mango  fruit 1 kg.jpg",
       "description": "Fresh mangoes",
       "stock": 86
     },
@@ -232,7 +232,7 @@
       "name": "Banana 1 kg",
       "price": 100,
       "category": "fruits",
-      "image": "/static/images/Products/Fruits/Banana 1 kg.jpg",
+      "image": "/static/Images/Products/Fruits/Banana 1 kg.jpg",
       "description": "Fresh bananas",
       "stock": 97
     },
@@ -241,7 +241,7 @@
       "name": "Black grapes 500 g",
       "price": 100,
       "category": "fruits",
-      "image": "/static/images/Products/Fruits/Black grapes 500 g.jpg",
+      "image": "/static/Images/Products/Fruits/Black grapes 500 g.jpg",
       "description": "Fresh black grapes",
       "stock": 100
     },
