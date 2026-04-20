@@ -73,12 +73,12 @@
                     </a>
                 </div>
                 <div class="d-flex align-items-center gap-3">
+                    <button id="theme-toggle" class="btn btn-outline-success me-2" title="Toggle light/dark mode">
+                        <i class="bi bi-moon"></i>
+                    </button>
                     {% if session.get('user_id') %}
                         <a href="{{ url_for('cart') }}" class="btn btn-link position-relative">
                             <i class="bi bi-cart3"></i>
-                            <span class="cart-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                0
-                            </span>
                         </a>
                         <a href="{{ url_for('logout') }}" class="btn btn-link auth-btn">
                             <i class="bi bi-box-arrow-right"></i> Logout
@@ -92,9 +92,7 @@
                         </a>
                     {% endif %}
                 </div>
-                <button class="btn btn-outline-success ms-3" id="theme-toggle">
-                    <span class="mode-text">LIGHT MODE</span>
-                </button>
+
             </div>
         </div>
     </nav>
@@ -116,28 +114,26 @@
     <script src="{{ url_for('static', filename='js/cart.js') }}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle logic (not for admin)
+            const isAdmin = window.location.pathname.startsWith('/admin');
             const themeToggle = document.getElementById('theme-toggle');
-            const html = document.documentElement;
-            const modeText = themeToggle.querySelector('.mode-text');
-            
-            function updateThemeText() {
-                const isDark = html.getAttribute('data-bs-theme') === 'dark';
-                modeText.textContent = isDark ? 'LIGHT MODE' : 'DARK MODE';
+            if (!isAdmin && themeToggle) {
+                // Set initial theme from localStorage or default to dark
+                const savedTheme = localStorage.getItem('theme') || 'dark';
+                document.documentElement.setAttribute('data-bs-theme', savedTheme);
+                themeToggle.innerHTML = savedTheme === 'dark' ? '<i class="bi bi-sun"></i>' : '<i class="bi bi-moon"></i>';
+                themeToggle.addEventListener('click', function() {
+                    const currentTheme = document.documentElement.getAttribute('data-bs-theme');
+                    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                    document.documentElement.setAttribute('data-bs-theme', newTheme);
+                    localStorage.setItem('theme', newTheme);
+                    themeToggle.innerHTML = newTheme === 'dark' ? '<i class="bi bi-sun"></i>' : '<i class="bi bi-moon"></i>';
+                });
+            } else if (isAdmin) {
+                // Always force dark mode for admin
+                document.documentElement.setAttribute('data-bs-theme', 'dark');
+                if (themeToggle) themeToggle.style.display = 'none';
             }
-            
-            themeToggle.addEventListener('click', function() {
-                const currentTheme = html.getAttribute('data-bs-theme');
-                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-                html.setAttribute('data-bs-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-                updateThemeText();
-            });
-            
-            // Set initial theme from localStorage
-            const savedTheme = localStorage.getItem('theme') || 'dark';
-            html.setAttribute('data-bs-theme', savedTheme);
-            updateThemeText();
-
             // Initialize cart if available
             if (typeof cart !== 'undefined') {
                 cart.updateUI();

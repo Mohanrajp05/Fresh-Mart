@@ -71,7 +71,6 @@ def create_checkout_session():
         flash(f"Stripe error: {str(e)}", 'danger')
         return redirect(url_for('checkout'))
 
-corre
 
 
 ATLAS_MONGO_URI = "mongodb+srv://freshmart:fresh%402026@cluster0.l9mlmhl.mongodb.net/freshmartdb?retryWrites=true&w=majority&tls=true&tlsAllowInvalidCertificates=true"
@@ -525,6 +524,7 @@ def admin_dashboard():
             user['address'] = 'N/A'
             user['status'] = 'inactive'
 
+
     # Get products for the Products tab
     products = []
 
@@ -541,6 +541,14 @@ def admin_dashboard():
         products.extend(db_products)
     except Exception as e:
         logger.warning(f"Could not load DB products: {str(e)}")
+
+    # Remove duplicates by product 'id' or 'name'
+    unique_products = {}
+    for product in products:
+        pid = product.get('id') or product.get('name')
+        if pid and pid not in unique_products:
+            unique_products[pid] = product
+    products = list(unique_products.values())
 
     low_stock_products = []
     out_of_stock_products = []

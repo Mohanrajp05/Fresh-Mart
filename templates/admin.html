@@ -4,6 +4,12 @@
 
 {% block head %}
 {{ super() }}
+<script>
+    // Always force dark mode for admin dashboard only
+    document.addEventListener('DOMContentLoaded', function() {
+        document.documentElement.setAttribute('data-bs-theme', 'dark');
+    });
+</script>
 <style>
     body {
         background-color: #1a1d24 !important;

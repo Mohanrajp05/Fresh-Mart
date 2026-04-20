@@ -16,7 +16,7 @@
       "category": "vegetables",
       "image": "/static/Images/Products/vegetables/Fresh Broccoli vegetable 500 g.jpg",
       "description": "Fresh broccoli",
-      "stock": 96
+      "stock": 95
     },
     {
       "id": "v3",
@@ -25,7 +25,7 @@
       "category": "vegetables",
       "image": "/static/Images/Products/vegetables/Onion 1 kg .jpg",
       "description": "Fresh onions",
-      "stock": 75
+      "stock": 65
     },
     {
       "id": "v4",
@@ -34,7 +34,7 @@
       "category": "vegetables",
       "image": "/static/Images/Products/vegetables/Carrot 1 kg.jpg",
       "description": "Crunchy carrots",
-      "stock": 96
+      "stock": 95
     },
     {
       "id": "v5",
@@ -43,7 +43,7 @@
       "category": "vegetables",
       "image": "/static/Images/Products/vegetables/Green sweet pepper 1 kg.jpg",
       "description": "Fresh sweet pepper",
-      "stock": 99
+      "stock": 89
     },
     {
       "id": "v6",
@@ -52,7 +52,7 @@
       "category": "vegetables",
       "image": "/static/Images/Products/vegetables/Fresh ginger root or rhizome 500 g.jpg",
       "description": "Fresh ginger",
-      "stock": 99
+      "stock": 98
     },
     {
       "id": "v7",
@@ -61,7 +61,7 @@
       "category": "vegetables",
       "image": "/static/Images/Products/vegetables/Green kidney bean 1 kg.jpg",
       "description": "Fresh kidney beans",
-      "stock": 100
+      "stock": 99
     },
     {
       "id": "v8",
@@ -70,7 +70,7 @@
       "category": "vegetables",
       "image": "/static/Images/Products/vegetables/Fresh Garlic 1 kg.jpg",
       "description": "Fresh garlic",
-      "stock": 99
+      "stock": 98
     },
     {
       "id": "v9",
@@ -88,7 +88,7 @@
       "category": "vegetables",
       "image": "/static/Images/Products/vegetables/Fresh Coriander.jpg",
       "description": "Fresh coriander",
-      "stock": 99
+      "stock": 98
     },
     {
       "id": "v11",
@@ -97,7 +97,7 @@
       "category": "vegetables",
       "image": "/static/Images/Products/vegetables/pumpkin 1 kg.jpg",
       "description": "Fresh pumpkin",
-      "stock": 99
+      "stock": 98
     },
     {
       "id": "v13",
@@ -106,7 +106,7 @@
       "category": "vegetables",
       "image": "/static/images/Products/vegetables/Sweet potato 1 kg.jpg",
       "description": "Healthy and delicious",
-      "stock": 99
+      "stock": 98
     },
     {
       "id": "v14",
@@ -143,6 +143,15 @@
       "image": "/static/images/Products/vegetables/1776368203_Brinjal_1_kg.jpg",
       "description": "Healthy and rich in protein.",
       "stock": 27
+    },
+    {
+      "id": "v18",
+      "name": "Drum Stick 1 kg",
+      "price": 50.0,
+      "category": "vegetables",
+      "image": "/static/Images/Products/vegetables/1776671688_Drum_Stick_1_kg.jpg",
+      "description": "Healthy and rich in vitamins",
+      "stock": 25
     }
   ],
   "fruits": [
@@ -297,7 +306,7 @@
       "category": "fruits",
       "image": "/static/images/Products/fruits/1776461419_Butter_fruit_1kg.jpg",
       "description": "Healthy and rich in Protein",
-      "stock": 4
+      "stock": 50
     },
     {
       "id": "f18",
