@@ -184,8 +184,7 @@ Local URLs:
 ## Default Admin Account
 
 If database is available, app ensures admin exists:
-- Email: `admin@freshmart.com`
-- Password: `admin123`
+
 
 **Change this in production.**
 
