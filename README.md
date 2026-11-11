@@ -308,6 +308,11 @@ If database is available, app ensures admin exists:
 
 ---
 
+##Author
+Mohan Raj P
+B.tech (Computer Science And Engineering)
+Jain University
+
 ## Future Improvements
 
 - Server-side cart
